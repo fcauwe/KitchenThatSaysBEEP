@@ -22,6 +22,7 @@
   
     Date    By  What
   20180124      RH      v1.0 Final version, data cleanup for instructable
+  20190705      FC      v2.0 Version with rotary encoder 
 
  */
  
@@ -115,16 +116,8 @@ void setup()
   Timer.Second = 0;
   // Set previous timer to timer
   prevTimer = Timer;
-  /*
-  // Initialize the button pins as inputs:
-  pinMode(PlusButtonPin,  INPUT_PULLUP); 
-  pinMode(MinusButtonPin, INPUT_PULLUP); 
-  pinMode(StartButtonPin, INPUT_PULLUP); 
-  pinMode(StopButtonPin,  INPUT_PULLUP);
-  */
   // Initialize the output pins:
   pinMode(BuzzerPin,  OUTPUT);
-  pinMode(OvenLEDPin, OUTPUT);
   
   // Set initial mode
   intState = ShowTime;
@@ -141,7 +134,7 @@ void setup()
   Timer1.initialize(1000);
   Timer1.attachInterrupt(timerIsr);
 
-  //
+  // Neopixel strip
   strip.begin();
   strip.setBrightness(50);
   strip.show(); // Initialize all pixels to 'off'
@@ -150,16 +143,13 @@ void setup()
 
 
 void Bep(int t)
-// Make a beeping sound
+// Make a short beeping sound
 { // Show BEEP in display
   digitalWrite(BuzzerPin,HIGH);
-  delay(t); // white
-  // Beep off for 500 milliseconds
+  delay(t); // Beep off for (t) milliseconds
   digitalWrite(BuzzerPin,LOW);
-
-
-  
 }
+
 void Beep(void)
 // Make a beeping sound
 { // Show BEEP in display
@@ -329,6 +319,7 @@ void rainbowCycle(uint8_t wait) {
     delay(wait);
   }
 }
+
 void rainbowCycleStep() {
  uint16_t i; 
  for(i=0; i< strip.numPixels(); i++) {
@@ -483,11 +474,6 @@ void loop(void)
      break;
   }
 
-/*
-  lastPlusButtonState  = readPlusPin;
-  lastMinusButtonState = readMinusPin;
-  lastStartButtonState = readStartPin;
-  lastStopButtonState  = readStopPin;
-  */
+
 
 }
