@@ -31,7 +31,6 @@
 #define ENCODER_B 12
 
 #define BuzzerPin 4
-#define OvenLEDPin 5
 #define TM1637CLKPin 3
 #define TM1637DataPin 2
 
