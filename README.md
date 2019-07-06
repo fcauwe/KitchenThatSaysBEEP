@@ -27,4 +27,42 @@ For less than 10€ it's possible to make a nicer kitchen;
 Special:
 * 3D printed, Lasercut or selfmade box for everything 
 
+## Pin Connection
+
+DS3231 --> Arduino (I2C):
+* Gnd + 5V --> Gnd + 5V
+* SDA --> A4 
+* SCL --> A5 
+
+Buzzer --> Arduino:
+* Gnd --> Gnd 
+* + --> Pin 4
+
+TM1637 --> Arduino:
+* Gnd + 5V --> Gnd + 5V
+* TM1637CLK --> Pin 3
+* TM1637Data --> Pin 2
+
+16 LED Neopixel Ring --> Arduino
+* Gnd + 5V --> Gnd + 5V
+* DI --> Pin 6
+
+Rotary Encoder
+* Gnd + 5V --> Gnd + 5V
+* ENCODER_BUTTON (SW) --> Pin 10
+* ENCODER_A (DT) --> Pin 11
+* ENCODER_B (CLK) --> Pin 12
+
+
+
+
+## Code:
+
+I used following libraries:
+* Adafruit_NeoPixel 
+* ClickEncoder: https://github.com/0xPIT/encoder
+* TimerOne (needed for ClickEncoder)
+* DS1307RTC (for the realtime clock)
+* Wire (needed for DS1207RTC )
+* TM1637Display
 
